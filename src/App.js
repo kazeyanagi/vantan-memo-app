@@ -1,24 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+
+import { useFetchMemo } from './hooks';
+import { 
+  Header,
+  Body,
+  Modal,
+  Detail,
+  Loading,
+  List
+} from './components';
 
 function App() {
+  const [open, setOpen] = useState(false)
+  const {memos, loading} = useFetchMemo()
+  const [memo, setMemo] = useState({})
+
+  const closeHandler = () => setOpen(false)
+
+  const clickHandler = (id) => {
+    setMemo(memos.find(memo => memo.id === id))
+    setOpen(true)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header/>
+      <Body>
+        <h2 style={{padding: '10px 0 20px'}}>メモ一覧</h2>
+        {loading && <Loading/>}
+        <List data={memos} clickHandler={clickHandler}/>
+      </Body>
+      <Modal open={open} closeHandler={closeHandler}>
+        <Detail memo={memo}/>
+      </Modal>
+    </>
   );
 }
 
