@@ -17,7 +17,7 @@ export const List = (props) => {
     <>
       <div style={{display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '20px', flexWrap: 'wrap'}}>
         {data.map(item => (
-          <Item item={item} clickHandler={clickHandler}/>
+          <Item key={item.id} item={item} clickHandler={clickHandler}/>
         ))}
       </div>
     </>

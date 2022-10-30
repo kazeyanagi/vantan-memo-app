@@ -5,7 +5,7 @@ export const useFetchMemo = () => {
   const [memos, setMemos] = useState([])
   
   useEffect(() => {
-    setInterval(() => {
+    setTimeout(() => {
       fetch('http://localhost:3001/memos')
         .then(res => res.json())
         .then(data => {
