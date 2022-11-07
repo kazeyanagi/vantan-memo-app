@@ -1,7 +1,18 @@
+import AppBar from "@mui/material/AppBar";
+import Typography from '@mui/material/Typography';
+
 export const Header = () => {
   return (
-    <header style={{borderBottom: '2px solid #bbb', padding: '0 20px', background: '#fff'}}>
-      <h1>メモ アプリ</h1>
-    </header>
+    <AppBar>
+      <Typography
+        variant="h1"
+        sx={{
+          fontSize: 32,
+          px: 2
+        }}
+      >
+        メモ アプリ
+      </Typography>
+    </AppBar>
   )
 }

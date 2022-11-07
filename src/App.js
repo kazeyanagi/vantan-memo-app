@@ -1,10 +1,10 @@
 import { useState } from 'react';
+import Modal from '@mui/material/Modal';
 
 import { useFetchMemo } from './hooks';
 import { 
   Header,
   Body,
-  Modal,
   Detail,
   Loading,
   List
@@ -30,7 +30,7 @@ function App() {
         {loading && <Loading/>}
         <List data={memos} clickHandler={clickHandler}/>
       </Body>
-      <Modal open={open} closeHandler={closeHandler}>
+      <Modal open={open} onClose={closeHandler}>
         <Detail memo={memo}/>
       </Modal>
     </>
