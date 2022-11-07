@@ -14,7 +14,7 @@ const Item = (props) => {
         mx: 'auto',
         border: '1px solid #dbdbdb'
       }}>
-        <CardActionArea>
+        <CardActionArea onClick={() => clickHandler(item.id)}>
           <Box sx={{
             height: 250
           }}>
